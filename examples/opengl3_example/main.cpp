@@ -67,11 +67,11 @@ static void ImImpl_RenderDrawLists(ImDrawList** const cmd_lists, int cmd_lists_c
         total_vtx_count += cmd_lists[n]->vtx_buffer.size();
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo_handle);
-    size_t neededBufferSize = total_vtx_count * sizeof(ImDrawVert);
-    if (neededBufferSize > vbo_max_size)
+    size_t needed_buffer_size = total_vtx_count * sizeof(ImDrawVert);
+    if (needed_buffer_size > vbo_max_size)
     {
-        vbo_max_size = neededBufferSize;
-        glBufferData(GL_ARRAY_BUFFER, total_vtx_count * sizeof(ImDrawVert), NULL, GL_STREAM_DRAW);
+        vbo_max_size = needed_buffer_size;
+        glBufferData(GL_ARRAY_BUFFER, needed_buffer_size, NULL, GL_STREAM_DRAW);
     }
 
     unsigned char* buffer_data = (unsigned char*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
